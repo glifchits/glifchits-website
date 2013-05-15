@@ -42,7 +42,7 @@ def create_app(config):
             message.body = body_text
     
             message.send()
-            return send_success(True)
+            return send_success()
         except:
             return send_success(False)
 
