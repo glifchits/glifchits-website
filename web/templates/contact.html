@@ -2,13 +2,82 @@
 
 {% block body %}
 
-<p>
-	Feel free to contact me about anything. I can be reached through the following channels:
-</p>
-<p>
-	Personal Email: <a href="mailto:george.lifchits@gmail.com">george.lifchits@gmail.com</a></br>
-	University Email: <a href="mailto:lifc1350@mylaurier.ca">lifc1350@mylaurier.ca</a></br>
-	LinkedIn: <a href="http://ca.linkedin.com/in/georgelifchits/">Profile</a></br>
-</p>
+{% if send_success == True: %}
+
+<div class="alert alert-success">
+	<a href="#" class="alert-close close" data-dismiss="alert">&times;</a>
+	Your message was sent successfully!
+</div>
+
+{% elif send_success == False: %}
+
+<div class="alert alert-error">
+	<a href="#" class="alert-close close" data-dismiss="alert">&times;</a>
+	Please specify your email address so I can get back to you! Your message was not delivered.
+</div>
+
+{% endif %}
+
+<div class="row-fluid">
+	<div class="span5 contact-text">
+		<p>
+			<i>George Lifchits</i>
+			<br/>
+			221 Harvard Place, Unit D
+			<br/>
+			Waterloo, Ontario, Canada
+			<br/>
+			N2J 4H9
+			<br/>
+		</p>
+		<hr>
+		<table>
+			<tr>
+				<td>Personal</td>
+				<td><a href="mailto:george.lifchits@gmail.com">george.lifchits@gmail.com</a></td>
+			</tr>
+			<tr>
+				<td>University</td>
+				<td><a href="mailto:george.lifchits@gmail.com">lifc1350@mylaurier.ca</a></td>
+			</tr>
+			<tr>
+				<td>Mobile</td>
+				<td>226-750-0505</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="span7">
+		<form class="well form-inline contact"
+		method="post" action=".">
+			<p>
+				Send me a quick message
+			</p>
+			<table>
+				<tr>
+					<td>
+					<input type="text" name='sender' class="input" placeholder="Your Email">
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<input type="text" name='subject' class="input" placeholder="Subject">
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<input type="text" name='message' class="input message" placeholder="Message">
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<button type="submit" name='submit' class="btn">
+						Send!
+					</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
 
 {% endblock %}

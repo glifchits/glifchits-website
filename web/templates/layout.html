@@ -3,23 +3,49 @@
 	<head>
 		<title>George Lifchits{{ title_modifier }}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.ico">
+
 		<!-- Bootstrap -->
-		<link rel="stylesheet" media="screen" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Sanchez">
+		<link rel="stylesheet" media="screen" href="/static/bootstrap/css/bootstrap.min.css">
+		<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400'>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Asap:700">
 		<style type="text/css">
 			body {
-				background-image: url("{{ url_for( 'static', filename='img/textured_paper.png' )
-			}}");
-			}
-
-			p {
+				background-image: url("/static/img/textured_paper.png"); 
 				font-family: 'Sanchez', serif;
 			}
 
 			h1, h2, h3, h4 {
 				font-family: 'Asap', sans-serif;
 				font-weight: 700;
+			}
+
+			table {
+				border-collapse: collapse;
+			}
+
+			table td {
+				padding-right: 10px;
+			}
+
+			.contact-text {
+				font-size: 16px;
+				line-height: 25px;
+			}
+
+			.contact > table {
+				width: 100%;
+			}
+			.contact > tr {
+				margin-bottom: 10px !important;
+			}
+			input {
+				width: 98% !important;
+			}
+			.message {
+				height: 80px !important;
+				vertical-align: top !important;
 			}
 
 			.navigation {
@@ -68,6 +94,12 @@
 			}
 			.first-hr {
 			}
+			
+			.alert-close {
+				font-family: Arial, Helvetica, sans-serif;
+				font-weight: bold;
+				font-size: 24px;
+			}
 		</style>
 	</head>
 	<body>
@@ -75,7 +107,7 @@
 			<div class="container-narrow">
 
 				<div class="masthead" id="header">
-					<a href="/"><img src="{{ url_for( 'static', filename='img/george-lifchits-header.png') }}"></a>
+					<a href="/"><img src="/static/img/george-lifchits-header.png"></a>
 				</div>
 
 				<div class="row-fluid mynav">
@@ -110,6 +142,6 @@
 
 		<!-- Scripts -->
 		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+		<script src="/static/bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>
