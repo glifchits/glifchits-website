@@ -26,6 +26,8 @@ def create_app(config):
 
     def send_email(response):
         try:
+            my_email = "George Lifchits <george.lifchits@gmail.com>"
+            
             the_sender = response.form['sender']
             the_subject = response.form['subject']
             body_text = response.form['message']
@@ -34,12 +36,13 @@ def create_app(config):
             if body_text == "": body_text = "No body text entered"
             
             the_subject = "(WEBSITE) " + the_subject
+            body_text = the_sender + "<br/>" + body_text
             
             from google.appengine.api import mail
             
-            message = mail.EmailMessage(sender=the_sender, subject=the_subject)
-            message.to = "George Lifchits <george.lifchits@gmail.com>"
-            message.body = body_text
+            message = mail.EmailMessage(sender=my_email, subject=the_subject)
+            message.to = my_email
+            message.html = body_text
     
             message.send()
             return send_success()
