@@ -2,20 +2,30 @@
 
 {% block body %}
 
-{% if send_success == True: %}
+{% if response == True: %}
 
 <div class="alert alert-success">
 	<a href="#" class="alert-close close" data-dismiss="alert">&times;</a>
 	Your message was sent successfully!
 </div>
 
-{% elif send_success == False: %}
+{% elif response == False: %}
 
-<div class="alert alert-error">
-	<a href="#" class="alert-close close" data-dismiss="alert">&times;</a>
-	Please specify your email address so I can get back to you!
-	Your message was not delivered.
-</div>
+	{% if message == "": %}
+	
+	<div class="alert alert-error">
+		<a href="#" class="alert-close close" data-dismiss="alert">&times;</a>
+		An error occurred, and your message was not delivered. Try again!
+	</div>
+	
+	{% else: %}
+	
+	<div class="alert alert-error">
+		<a href="#" class="alert-close close" data-dismiss="alert">&times;</a>
+		{{ message }}
+	</div>
+	
+	{% endif %}
 
 {% endif %}
 

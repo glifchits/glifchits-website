@@ -25,13 +25,21 @@ def create_app(config):
             return render_template('contact.html', title_modifier=" - Contact")
 
     def send_email(response):
+        class EmailError(Exception):
+            def __init__(self, msg):
+                self.msg = msg
+        
         try:
             my_email = "George Lifchits <george.lifchits@gmail.com>"
             
             the_sender = response.form['sender']
             the_subject = response.form['subject']
             body_text = response.form['message']
-        
+            
+            if the_sender == "": 
+                raise EmailError("No email provided. Please let me know which email I can contact you at!")
+            elif "@" not in the_sender or "." not in the_sender:
+                raise EmailError("Bad email provided. Please enter a valid email I can contact you at!")
             if the_subject == "": the_subject = "No subject"
             if body_text == "": body_text = "No body text entered"
             
@@ -46,10 +54,12 @@ def create_app(config):
     
             message.send()
             return send_success()
+        except EmailError as e:
+            return send_success(False, e.msg)
         except:
             return send_success(False)
 
-    def send_success(response = True):
-        return render_template('contact.html', send_success = response)
+    def send_success(result = True, msg = ""):
+        return render_template('contact.html', response = result, message = msg)
 
     return app
