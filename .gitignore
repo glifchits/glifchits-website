@@ -6,3 +6,5 @@
 .pydevproject
 
 *.pyc
+
+*.prefs
