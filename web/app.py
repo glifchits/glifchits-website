@@ -30,8 +30,10 @@ def create_app(config):
             the_subject = response.form['subject']
             body_text = response.form['message']
         
-            if the_subject == "": the_subject = "Contact: No subject"
+            if the_subject == "": the_subject = "No subject"
             if body_text == "": body_text = "No body text entered"
+            
+            the_subject = "(WEBSITE) " + the_subject
             
             from google.appengine.api import mail
             
