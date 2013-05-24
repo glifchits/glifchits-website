@@ -60,47 +60,27 @@
 
 	<div class="span7">
 		<form class="well form-inline contact" method="post" action=".">
-			<p>
-				Send me a quick message
-			</p>
-			<table>
-				<tr>
-					<td>
-					<input type="text" name='sender' class="input" placeholder="Your Email" required>
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<input type="text" name='subject' class="input" placeholder="Subject">
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<input type="textarea" name='message' class="input-block-level message" placeholder="Message">
-					</td>
-				</tr>
-				<tr>
-					<td>
-					<button type="submit" name='submit' class="btn">
-						Send
-					</button></td>
-				</tr>
-			</table>
+			<fieldset>
+				<input type="text" id="email" name="sender" placeholder="Your email" required>
+				<input type="text" name="subject" placeholder="Subject">
+				<textarea name="message" placeholder="Message"></textarea>
+				<button type="submit" class="btn">
+					Send
+				</button>
+			</fieldset>
 		</form>
 	</div>
 </div>
 
 <script type="text/javascript">
-	function stopRKey(evt) {
-		var evt = (evt) ? evt : ((event) ? event : null);
-		var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
-		if ((evt.keyCode == 13) && (node.type == "text")) {
-			return false;
+	$("#email").validate({
+		rules : {
+			field : {
+				required : true,
+				email : true
+			}
 		}
-	}
-
-
-	document.onkeypress = stopRKey;
+	}); 
 </script>
 
 {% endblock %}

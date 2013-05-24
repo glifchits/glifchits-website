@@ -1,3 +1,7 @@
+* {
+  text-rendering: optimizeLegibility;
+}
+
 body {
 	background-image: url("/static/img/textured_paper.png");
 	font-family: 'Sanchez', serif;
@@ -26,12 +30,13 @@ table td {
 .contact > tr {
 	margin-bottom: 10px !important;
 }
-input {
+input, textarea {
 	width: 98% !important;
+	margin-bottom: 15px !important;
 }
-.message {
-	height: 80px !important;
-	vertical-align: top !important;
+.contact textarea {
+	resize: none;
+	height: 60px;
 }
 
 .centered-pills {
