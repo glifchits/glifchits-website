@@ -38,7 +38,8 @@ def create_app(config):
             
             if the_sender == "": 
                 raise EmailError("No email provided. Please let me know which email I can contact you at!")
-            elif "@" not in the_sender or "." not in the_sender:
+            elif "@" not in the_sender or \
+                 "." not in the_sender[the_sender.find("@"):]:
                 raise EmailError("Bad email provided. Please enter a valid email I can contact you at!")
             if the_subject == "": the_subject = "No subject"
             if body_text == "": body_text = "No body text entered"
@@ -59,7 +60,7 @@ def create_app(config):
         except:
             return send_success(False)
 
-    def send_success(result = True, msg = ""):
-        return render_template('contact.html', response = result, message = msg)
+    def send_success(result=True, msg=""):
+        return render_template('contact.html', response=result, message=msg)
 
     return app
